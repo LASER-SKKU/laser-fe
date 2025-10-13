@@ -1,0 +1,167 @@
+/* ===== 레이아웃: 좌상단 배치 ===== */
+.home{
+  min-height:100vh;
+  display:flex;
+  align-items:flex-start;   /* ← 위쪽 정렬 */
+  justify-content:flex-start; /* ← 왼쪽 정렬 */
+}
+
+.hero{
+  --logo-w:200px;          /* 로고 폭(필요시 조절) */
+  --logo-gap:1px;         /* 로고-검색창 간격 */
+
+  width:100%;
+  max-width:none;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  padding:24px;            /* 화면 가장자리 여백 */
+  margin:0;
+  align-items:flex-start;
+}
+
+/* 상단: 로고 + 검색창 가로 정렬 */
+.search-row{
+  display:flex;
+  align-items:center;
+  gap:var(--logo-gap);
+  width:100%;
+}
+
+.site-logo{
+  width:var(--logo-w);
+  height:auto;
+  display:block;
+}
+
+/* ===== 기존 스타일 일부 조정 ===== */
+
+.search-wrap{
+  display: block;
+  position: relative;
+  flex: 1;
+  min-height: 56px;
+  padding-right: 64px;
+} /* 중앙정렬 해제 */
+
+/* search button size and location */
+.search-btn{
+  position:absolute; right:365px; top: 40%; transform: translateY(-50%);
+  border:none; border-radius:999px;
+  width:60px; height:60px; display:grid; place-items:center;
+}
+.search-btn.center{ top:50%; transform:translateY(-50%); }
+.search-btn.row1{ top:34px; transform:translateY(-50%); }
+.search-btn.enabled{ background:#275317; color:#fff; cursor:pointer; }
+.search-btn.enabled:hover{ background:#59853B; color:#fff; }
+.search-btn.disabled{ background:#D6E2D7; color:#fff; }
+.search-btn svg path{ fill:currentColor; }
+
+/* 필터: 좌측 정렬 + 로고만큼 들여쓰기 */
+.filters-row{
+  width:100%;
+  margin: 0;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  align-items:flex-start;
+  padding-left:0;       /* 기존 34px 제거 */
+  overflow:visible;
+}
+
+.filter-card{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  flex:0 1 auto;
+  width:auto;
+  min-width:0;
+}
+
+/* main filter tags */
+.filter-main{
+  background:#F2F2F2; color:#111;
+  border:none; border-radius:999px;
+  display:flex; align-items:center; justify-content:center;
+  gap:8px;
+  padding:12px 12px;
+  width:fit-content; min-width:unset; white-space:nowrap;
+  cursor:pointer;
+  transition:background .25s ease, color .25s ease;
+}
+.filter-main .icon-badge{
+  width:24px; height:24px; border-radius:50%;
+  background:#fff; display:grid; place-items:center; overflow:hidden;
+}
+.filter-main .icon-badge img{ width:70%; height:70%; object-fit:contain; display:block; }
+.filter-main .filter-text{ font-size:16px; font-weight:700; }
+.filter-main .arrow{
+  margin-left:auto; width:8px; height:8px;
+  border-right:2px solid currentColor; border-bottom:2px solid currentColor;
+  transform:rotate(-45deg); transition:transform .25s ease;
+}
+.filter-main:hover{ background:#000; color:#fff; }
+.filter-main:hover .arrow{ transform:rotate(45deg); }
+.filter-main.selected{ background:var(--active-bg,#000); color:#fff; }
+.filter-main.selected .arrow{ transform:rotate(45deg); }
+.filter-main.open{ background:var(--active-bg,#000); color:#fff; }
+.filter-main.open .arrow{ transform:rotate(45deg); }
+
+/* subfilter tags */
+.sublist{
+  position:absolute;
+  left:0;
+  top:calc(100% + 8px);
+  z-index:20;
+
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+  align-items:flex-start;
+
+  transform-origin:top;
+  transform:scaleY(0);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transition:transform .22s ease, opacity .22s ease, visibility 0s linear .22s;
+
+  width:auto;
+  max-width:none;
+  overflow:visible;
+}
+
+.sublist.show{
+  transform:scaleY(1);
+  opacity:1;
+  visibility:visible;
+  pointer-events:auto;
+  transition:transform .22s ease, opacity .22s ease;
+}
+
+.subitem{
+  background:#F2F2F2; color:#111;
+  border:none; border-radius:999px;
+  display:inline-flex; align-items:center; gap:8px;
+  padding:6px 10px; margin-top:8px;
+  cursor:pointer;
+  transition:background .2s ease, color .2s ease, transform .2s ease;
+
+  white-space:nowrap;
+  width:max-content;
+  max-width:none;
+}
+.subitem .icon-badge{
+  width:20px; height:20px; background:#fff; border-radius:50%;
+  display:grid; place-items:center; overflow:hidden;
+}
+.subitem .icon-badge img{ width:70%; height:70%; object-fit:contain; }
+.subitem .sub-text{ font-size:14px; font-weight:600; }
+.subitem .plus{ margin-left:auto; font-size:15px; color:#333; transition:transform .2s ease, color .2s ease; }
+
+.subitem:hover{ background:var(--hover-color,#111); color:#fff; transform:translateY(-1px); }
+.subitem:hover .plus{ color:#fff; transform:rotate(45deg); }
+
+.subitem.active{ background:var(--hover-color,#111); color:#fff; }
+.subitem.active .plus{ color:#fff; transform:none; }
