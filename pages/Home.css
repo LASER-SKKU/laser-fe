@@ -1,26 +1,25 @@
-/* ===== 레이아웃: 좌상단 배치 ===== */
+/* Layout */
 .home{
   min-height:100vh;
   display:flex;
-  align-items:flex-start;   /* ← 위쪽 정렬 */
-  justify-content:flex-start; /* ← 왼쪽 정렬 */
+  align-items:flex-start;
+  justify-content:flex-start;
 }
 
 .hero{
-  --logo-w:200px;          /* 로고 폭(필요시 조절) */
-  --logo-gap:1px;         /* 로고-검색창 간격 */
+  --logo-w:200px;
+  --logo-gap:1px;
 
   width:100%;
   max-width:none;
   display:flex;
   flex-direction:column;
   gap:12px;
-  padding:24px;            /* 화면 가장자리 여백 */
+  padding:24px;
   margin:0;
   align-items:flex-start;
 }
 
-/* 상단: 로고 + 검색창 가로 정렬 */
 .search-row{
   display:flex;
   align-items:center;
@@ -34,15 +33,13 @@
   display:block;
 }
 
-/* ===== 기존 스타일 일부 조정 ===== */
-
 .search-wrap{
   display: block;
   position: relative;
   flex: 1;
   min-height: 56px;
   padding-right: 64px;
-} /* 중앙정렬 해제 */
+}
 
 /* search button size and location */
 .search-btn{
@@ -57,7 +54,7 @@
 .search-btn.disabled{ background:#D6E2D7; color:#fff; }
 .search-btn svg path{ fill:currentColor; }
 
-/* 필터: 좌측 정렬 + 로고만큼 들여쓰기 */
+/* search filter location */
 .filters-row{
   width:100%;
   margin: 0;
@@ -65,7 +62,7 @@
   flex-wrap:wrap;
   gap:8px;
   align-items:flex-start;
-  padding-left:0;       /* 기존 34px 제거 */
+  padding-left:0;
   overflow:visible;
 }
 
