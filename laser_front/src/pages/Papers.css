@@ -1,0 +1,232 @@
+/* src/pages/Papers.css */
+
+.papers-page .papers-body {
+  padding-left: calc(var(--logo-w) + var(--logo-gap));
+  padding-right: 40px;
+  box-sizing: border-box;
+  margin-top: 24px;
+}
+
+.paper-info-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.papers-outer {
+  width: 1160px;
+}
+.papers-page .papers-inner {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e3e6e8;
+  padding: 24px 28px 32px;
+  width: 1160px;
+}
+
+.papers-debug {
+  font-size: 12px;
+  color: #999;
+  margin: 0 0 8px;
+}
+
+.papers-title {
+  margin: 10px 0 8px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.papers-page .paper-badges-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.papers-page .paper-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 99px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.paper-badge-icon {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.paper-badge.year {
+  background: #f9dddb;
+  color: #e53935;
+  border: 1px solid #f9dddb;
+}
+
+.paper-badge.cites {
+  background: #ddf6e0;
+  color: #2e7d32;
+  border: 1px solid #ddf6e0;
+}
+
+.details-page .nopaper-wrap {
+  width : 100%;
+  min-height: 300px;
+  display: grid;
+  place-items: center;
+  margin-top: 24px;
+}
+
+.papers-section {
+  margin-top: 28px;
+}
+
+.papers-divider {
+  height: 1px;
+  background: #0a6b20;
+  margin-bottom: 14px;
+}
+
+.papers-section-title {
+  margin: 0 0 10px;
+  font-size: 23px;
+  font-weight: 700;
+}
+
+.papers-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  white-space: pre-line;
+}
+
+.papers-placeholder {
+  margin: 35px 0 80px;
+  text-align: center;
+  font-size: 16px;
+  color: #999999;
+}
+
+.papers-subtext {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: #666;
+}
+
+.papers-subtext.error {
+  color: #c62828;
+}
+
+.papers-lab {
+  margin-top: 4px;
+}
+
+.papers-page .paper-badge.impact {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  border-width: 1.5px;
+  transition: box-shadow 0.15s ease, transform 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.papers-page .paper-badge.impact.popular {
+  background: #e6f5ff;
+  color: #008d8b;
+  border-color: #66c0d9;
+}
+
+.papers-page .paper-badge.impact.authoritative {
+  background: #fff8df;
+  color: #b8860b;
+  border-color: #f0c341;
+}
+
+.papers-page .paper-badge.impact:hover {
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
+}
+
+.papers-page .badge-popover {
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  margin-top: 6px;
+  padding: 6px 10px;
+  background: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  font-size: 12px;
+  color: #333333;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.papers-page .badge-popover::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-left: 1px solid #e0e0e0;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* 배지 행이 flex가 아니라면 강제로 정렬 */
+.paper-badges-row.papers-page {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Read More 캡슐 버튼 */
+.paper-readmore-pill {
+  margin-left: auto;              /* 오른쪽 끝으로 밀기 */
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  border: none;
+  background: #ad8add;            /* 연한 보라색 */
+  color: #eeeeee;                 /* 진한 회색 글씨 */
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  height: 30px;
+  outline: none;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease,
+    transform 0.08s ease;
+}
+
+.paper-readmore-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+/* hover 시 색상/그림자/살짝 떠오르는 효과 */
+.paper-readmore-pill:hover {
+  background: #723ed8;            /* 더 진한 보라색 */
+  color: #eeeeee;                 /* 연한 회색 글씨 */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+  transform: translateY(-1px);
+}
+
+.paper-readmore-pill:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
