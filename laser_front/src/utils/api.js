@@ -1,6 +1,6 @@
-const BASE_URL = 'http://43.201.113.80:8000';
+// Replace with your Railway proxy URL after deployment
+const PROXY_URL = 'https://laser-proxy-server-production.up.railway.app/';
 
 export function getApiUrl(endpoint) {
-  const fullUrl = `${BASE_URL}${endpoint}`;
-  return `https://api.allorigins.win/raw?url=${encodeURIComponent(fullUrl)}`;
+  return `${PROXY_URL}/api${endpoint}`;
 }
