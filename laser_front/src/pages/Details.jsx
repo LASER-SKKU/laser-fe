@@ -76,7 +76,7 @@ export default function Details() {
         setError(null);
 
         const res = await fetch(
-          `http://43.201.113.80:8000/labs/${encodeURIComponent(labId)}`,
+          `${process.env.REACT_APP_API_URL}/labs/${encodeURIComponent(labId)}`,
           { signal: ctrl.signal }
         );
 

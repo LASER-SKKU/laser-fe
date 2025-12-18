@@ -321,7 +321,7 @@ export default function SearchResults() {
         setLabsLoading(true);
 
         const res = await fetch(
-          `http://43.201.113.80:8000/labs?department=${encodeURIComponent(deptParam)}`,
+          `${process.env.REACT_APP_API_URL}/labs?department=${encodeURIComponent(deptParam)}`,
           { signal: ctrl.signal }
         );
         if (res.status === 404) {
@@ -364,7 +364,7 @@ export default function SearchResults() {
         setAiDone(false);
 
         const res = await fetch(
-          "http://43.201.113.80:8000/labs/recommend",
+          `${process.env.REACT_APP_API_URL}/labs/recommend`,
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -383,7 +383,7 @@ export default function SearchResults() {
           baseResults.map(async (r) => {
             try {
               const labRes = await fetch(
-                `http://43.201.113.80:8000/labs/${encodeURIComponent(
+                `${process.env.REACT_APP_API_URL}/labs/${encodeURIComponent(
                   r.lab_id
                 )}`,
                 { signal: ctrl.signal }

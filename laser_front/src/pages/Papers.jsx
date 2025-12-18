@@ -85,7 +85,7 @@ export default function Papers() {
         setError(null);
 
         const res = await fetch(
-          `http://43.201.113.80:8000/papers/${encodeURIComponent(paperId)}`,
+          `${process.env.REACT_APP_API_URL}/papers/${encodeURIComponent(paperId)}`,
           { signal: controller.signal }
         );
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -118,7 +118,7 @@ export default function Papers() {
         setLabError(null);
 
         const res = await fetch(
-          `http://43.201.113.80:8000/labs/${encodeURIComponent(
+          `${process.env.REACT_APP_API_URL}/labs/${encodeURIComponent(
             paper.lab_id
           )}`,
           { signal: controller.signal }
