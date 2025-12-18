@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 import { GROUPS } from "../share/groups";
+import { getApiUrl } from "../utils/api";
 import FilterCard from "../components/FilterCard";
 
 import "./Home.css";
@@ -85,7 +86,7 @@ export default function Papers() {
         setError(null);
 
         const res = await fetch(
-          `${process.env.REACT_APP_API_URL}/papers/${encodeURIComponent(paperId)}`,
+          getApiUrl(`/papers/${encodeURIComponent(paperId)}`),
           { signal: controller.signal }
         );
         if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -118,9 +119,7 @@ export default function Papers() {
         setLabError(null);
 
         const res = await fetch(
-          `${process.env.REACT_APP_API_URL}/labs/${encodeURIComponent(
-            paper.lab_id
-          )}`,
+          getApiUrl(`/labs/${encodeURIComponent(paper.lab_id)}`),
           { signal: controller.signal }
         );
         if (!res.ok) throw new Error(`HTTP ${res.status}`);

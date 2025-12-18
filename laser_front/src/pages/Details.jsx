@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 
 import { GROUPS } from "../share/groups";
+import { getApiUrl } from "../utils/api";
 import FilterCard from "../components/FilterCard";
 
 import "./Home.css";
@@ -76,7 +77,7 @@ export default function Details() {
         setError(null);
 
         const res = await fetch(
-          `${process.env.REACT_APP_API_URL}/labs/${encodeURIComponent(labId)}`,
+          getApiUrl(`/labs/${encodeURIComponent(labId)}`),
           { signal: ctrl.signal }
         );
 

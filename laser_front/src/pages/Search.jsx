@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import { Link, useLocation, useSearchParams, useNavigate } from "react-router-dom";
 import { GROUPS } from "../share/groups";
+import { getApiUrl } from "../utils/api";
 import FilterCard from "../components/FilterCard";
 import ProfessorCard from "../components/ProfessorCard";
 import "./Home.css";
@@ -321,7 +322,7 @@ export default function SearchResults() {
         setLabsLoading(true);
 
         const res = await fetch(
-          `${process.env.REACT_APP_API_URL}/labs?department=${encodeURIComponent(deptParam)}`,
+          getApiUrl(`/labs?department=${encodeURIComponent(deptParam)}`),
           { signal: ctrl.signal }
         );
         if (res.status === 404) {
@@ -364,7 +365,7 @@ export default function SearchResults() {
         setAiDone(false);
 
         const res = await fetch(
-          `${process.env.REACT_APP_API_URL}/labs/recommend`,
+          getApiUrl(`/labs/recommend`),
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -383,9 +384,7 @@ export default function SearchResults() {
           baseResults.map(async (r) => {
             try {
               const labRes = await fetch(
-                `${process.env.REACT_APP_API_URL}/labs/${encodeURIComponent(
-                  r.lab_id
-                )}`,
+                getApiUrl(`/labs/${encodeURIComponent(r.lab_id)}`),
                 { signal: ctrl.signal }
               );
               if (!labRes.ok) return r;
